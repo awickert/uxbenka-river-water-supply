@@ -1,5 +1,23 @@
 #! /bin/bash
 
+# Based on a range of possible precipitation-rate inputs, builds vectorized
+# stream networks (>= 0.1 m3/s), creates a 200-meter buffer around them, clips
+# these to the extent of a study watershed, and prints the area of this
+# buffered region for comparison to the area of the study watershed.
+
+# The purpose of this is to assess the region of reasonable habitability near
+# the Maya site of Uxbenka through periods of climate change.
+
+# Written as part of a collaboration with Amy Thompson and Keith Prufer.
+
+
+# Import base data sets
+r.in.gdal input=SRTM.tif output=SRTM-test
+v.in.ogr input=basin.gpkg output=basin.test
+
+# Analyze for a range of threshold drainage areas, corresponding to different
+# precipitation rates from an analysis of modern precip data (annual,
+# wet-season, and dry-season)
 declare -a DrainageAreaArray=(923
 699
 2577
