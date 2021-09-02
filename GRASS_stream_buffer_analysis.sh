@@ -67,17 +67,19 @@ done
 # This will just append to the existing $outfile to prevent accidental
 # data loss
 echo "-------------------------" >> $outfile
+echo "Athresh,Awithin" >> $outfile
+echo -e "AThresh\tAwithin"
 for A in ${DrainageAreaArray[@]}
 do
     echo -n $A >> $outfile
     echo -n "," >> $outfile
     Awithin=$(v.univar map=streams_${A}_buffered_inbasin column=area_km2 | grep -oP '(?<=sum: )[^ ]*')
     echo $Awithin >> $outfile
-    echo $A,$Awithin
+    echo -e "$A\t$Awithin"
 done
 
-echo basin
-v.univar map=basin column=area_km2
-echo
-echo
+echo -n "basin," >> $outfile
+Abasin=$(v.univar map=basin column=area_km2 | grep -oP '(?<=sum: )[^ ]*')
+echo $Abasin >> $outfile
+echo -e"basin\t$Abasin"
 
