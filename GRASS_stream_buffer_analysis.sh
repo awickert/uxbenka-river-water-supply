@@ -43,7 +43,9 @@ done
 for A in ${DrainageAreaArray[@]}
 do
     echo $A
-    v.buffer input=streams_$A output=streams_${A}_buffered distance=200 --o
+    v.buffer input=streams_$A output=streams_${A}_outer_buffer distance=331 --o
+    v.buffer input=streams_$A output=streams_${A}_inner_buffer distance=10 --o
+    v.overlay binput=streams_${A}_inner_buffer ainput=streams_${A}_outer_buffer output=streams_${A}_buffered operator=not --o
     v.overlay ainput=streams_${A}_buffered atype=area binput=basin output=streams_${A}_buffered_inbasin operator=and --o
 done
 
