@@ -37,6 +37,13 @@ declare -a DrainageAreaArray=(923
 1121
 11513)
 
+# For a more general survey through the possible drainage areas, in order
+# to produce a plot of these at consistent intervals
+# Comment out to use the hydrologically determined values above.
+#DrainageArray=($(seq 5000 10000 70000))
+# This set is chosen specifically for the study basin here
+declare -a DrainageAreaArray=(500 1000 2000 4000 8000 16000 32000 64000 128000)
+
 for A in ${DrainageAreaArray[@]}
 do
     echo $A
