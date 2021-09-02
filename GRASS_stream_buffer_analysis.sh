@@ -11,6 +11,9 @@
 # Written as part of a collaboration with Amy Thompson and Keith Prufer.
 
 
+# File to export threshold drainage area , area covered by buffer
+outfile=Adrain_Abuffer.csv
+
 # Import base data sets
 r.in.gdal input=SRTM.tif output=SRTM
 v.in.ogr input=basin.gpkg output=basin
@@ -61,12 +64,16 @@ do
 done
 
 # Univariate statistics -- get sum of area
+# This will just append to the existing $outfile to prevent accidental
+# data loss
+echo "-------------------------" >> $outfile
 for A in ${DrainageAreaArray[@]}
 do
-    echo $A
-    v.univar map=streams_${A}_buffered_inbasin column=area_km2
-    echo
-    echo
+    echo -n $A >> $outfile
+    echo -n "," >> $outfile
+    Awithin=$(v.univar map=streams_${A}_buffered_inbasin column=area_km2 | grep -oP '(?<=sum: )[^ ]*')
+    echo $Awithin >> $outfile
+    echo $A,$Awithin
 done
 
 echo basin
