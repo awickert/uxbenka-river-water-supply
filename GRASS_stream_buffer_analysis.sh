@@ -88,5 +88,5 @@ done
 echo -n "basin," >> $outfile
 Abasin=$(v.univar map=basin column=area_km2 | grep -oP '(?<=sum: )[^ ]*')
 echo $Abasin >> $outfile
-echo -e"basin\t$Abasin"
+echo -e "basin\t$Abasin"
 
