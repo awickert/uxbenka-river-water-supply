@@ -44,6 +44,24 @@ declare -a DrainageAreaArray=(923
 # This set is chosen specifically for the study basin here
 declare -a DrainageAreaArray=(500 1000 2000 4000 8000 16000 32000 64000 128000)
 
+# And this now applies the runoff ratio, rounded to 18.5%
+declare -a DrainageAreaArray=(4988
+3776
+13928
+4242
+3178
+10034
+3690
+2743
+7842
+6053
+4653
+27766
+7696
+6060
+62235)
+
+
 for A in ${DrainageAreaArray[@]}
 do
     echo $A
