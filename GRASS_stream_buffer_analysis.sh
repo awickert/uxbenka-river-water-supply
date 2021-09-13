@@ -81,7 +81,7 @@ done
 # New GRASS -- no need to make column first
 v.to.db map=basin option=area units=kilometers columns=area_km2
 
-# Area of 200 m buffer around all streams, in basin
+# Area of buffer around all streams, in basin
 for A in ${DrainageAreaArray[@]}
 do
     echo $A
