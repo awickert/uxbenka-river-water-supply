@@ -56,5 +56,5 @@ do
     v.distance from=plazuelas to=streams_$A upload=dist column=distance_to_rivers_$A
 done
 
-v.db.select map=plazuelas sep='\t' file=plazuelas.tsv
+v.db.select map=plazuelas sep='\t' file=plazuelas.tsv --o
 
