@@ -18,19 +18,13 @@ declare -a DrainageAreaArray=(4988
 6060
 62235)
 
-# Streams
-for A in ${DrainageAreaArray[@]}
-do
-    echo $A
-    v.out.ogr input=streams_$A type=line format=ESRI_Shapefile output=streams_$A
-done
-
 # Streams in basin
 for A in ${DrainageAreaArray[@]}
 do
     echo $A
     # tmp because of attributes linked to points, not lines
-    v.extract input=streams_${A} output=tmp type=line
+    v.extract input=streams_${A} output=tmp type=line --o
+    v.db.droptable map=tmp -f
     v.overlay ainput=tmp atype=line binput=basin output=streams_${A}_inbasin operator=and --o
     v.out.ogr input=streams_${A}_inbasin output=streams_${A}_inbasin format=ESRI_Shapefile --o
 done
