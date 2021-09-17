@@ -1,0 +1,8 @@
+# Keep protected input data out of the repo
+*.gpkg
+*.shp
+
+# As well as outputs that aren't directly needed in the repo
+*.tsv
+*.csv
+*.png
