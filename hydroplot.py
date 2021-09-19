@@ -57,6 +57,9 @@ plt.ylabel('Distance from plazuelas to\nnearest streams (mean, SD) [m]', fontsiz
 plt.xlim(0,2500)
 plt.ylim(0,2300)
 plt.legend(fontsize=10)
+plt.text(0.026, 0.04, 'a', transform=plt.gca().transAxes, fontsize=14,
+         horizontalalignment='left', verticalalignment='bottom', 
+         fontweight='bold' )
 plt.tight_layout()
 
 # Buffer fraction of basin area
@@ -71,6 +74,8 @@ plt.xlim(0,2500)
 plt.ylim(0,45)
 plt.xlabel('Specific discharge [mm yr$^{-1}$]', fontsize=10)
 plt.tight_layout()
-
+plt.text(0.026, 0.96, 'b', transform=plt.gca().transAxes, fontsize=14,
+         horizontalalignment='left', verticalalignment='top', 
+         fontweight='bold' )
 plt.savefig('RioBlanco_Uxbenka_Hydro.png')
 
